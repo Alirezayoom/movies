@@ -1,14 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import { menu } from "@/constants";
 import DarkModeToggle from "../common/dark-mode-toggle";
+import { menu } from "@/constants";
 import { MenuIcon } from "@/icons";
 
 export default function Header() {
   return (
-    <header>
+    <header className="relative z-30">
       <div className="h-16"></div>
-      <div className="fixed bg-neutral-100 dark:bg-neutral-950 border-b border-b-neutral-200 dark:border-b-transparent top-0 left-0 w-full">
+      <div className="fixed bg-neutral-100/80 dark:bg-neutral-950/80 backdrop-blur-lg border-b border-b-neutral-200 dark:border-b-transparent top-0 left-0 w-full">
         <div className="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
           <Link className="block font-bold text-xl text-blue-600" href="/">
             Logo
