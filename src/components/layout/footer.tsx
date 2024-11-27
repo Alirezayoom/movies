@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-100 border-t border-t-neutral-200">
+    <footer className="bg-neutral-100 dark:bg-neutral-950 border-t border-t-neutral-200 dark:border-t-transparent">
       <div className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-blue-600">
           <Link className="block font-bold text-xl text-blue-600" href="/">
@@ -11,7 +11,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-neutral-500">
+        <p className="mx-auto mt-6 max-w-md text-center leading-relaxed text-neutral-500 dark:text-neutral-400">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt
           consequuntur amet culpa cum itaque neque.
         </p>
@@ -20,7 +20,7 @@ export default function Footer() {
           {menu.map((item) => (
             <li key={item.id}>
               <Link
-                className="text-neutral-700 transition hover:text-neutral-700/75"
+                className="text-neutral-700 dark:tene transition dark:text-neutral-200 hover:text-neutral-700/75"
                 href={item.link}
               >
                 {item.name}
@@ -34,7 +34,7 @@ export default function Footer() {
             <Link
               href="#"
               target="_blank"
-              className="text-neutral-700 transition hover:text-neutral-700/75"
+              className="text-neutral-700 dark:text-neutral-200 transition hover:text-neutral-700/75"
             >
               facebook
             </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
             <Link
               href="#"
               target="_blank"
-              className="text-neutral-700 transition hover:text-neutral-700/75"
+              className="text-neutral-700 dark:text-neutral-200 transition hover:text-neutral-700/75"
             >
               instagram
             </Link>
