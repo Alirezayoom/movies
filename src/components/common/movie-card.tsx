@@ -5,7 +5,7 @@ import { PlayIcon } from "@/icons";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   return (
-    <Link href="/" className="inline-block">
+    <Link href="/movies/movie-name" className="inline-block">
       <div className="relative aspect-[11/16] group rounded-xl overflow-hidden">
         <div
           className="opacity-0 group-hover:opacity-100 transition duration-200 

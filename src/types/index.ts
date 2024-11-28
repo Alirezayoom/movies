@@ -11,6 +11,8 @@ export type Movie = {
   original_title: string;
   release_date: string;
   vote_average: number;
+  backdrop_path: string;
+  overview: string;
 };
 
 export type Movies = {
