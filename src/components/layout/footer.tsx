@@ -1,4 +1,5 @@
 import { menu } from "@/constants";
+import { FacebookIcon, InstagramIcon, XIcon } from "@/icons";
 import Link from "next/link";
 
 export default function Footer() {
@@ -36,7 +37,7 @@ export default function Footer() {
               target="_blank"
               className="text-neutral-700 dark:text-neutral-200 transition hover:text-neutral-700/75"
             >
-              facebook
+              <FacebookIcon className="w-5 h-5" />
             </Link>
           </li>
 
@@ -46,7 +47,17 @@ export default function Footer() {
               target="_blank"
               className="text-neutral-700 dark:text-neutral-200 transition hover:text-neutral-700/75"
             >
-              instagram
+              <InstagramIcon className="w-5 h-5" />
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              href="#"
+              target="_blank"
+              className="text-neutral-700 dark:text-neutral-200 transition hover:text-neutral-700/75"
+            >
+              <XIcon className="w-5 h-5" />
             </Link>
           </li>
         </ul>
