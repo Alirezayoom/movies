@@ -3,8 +3,12 @@ import React from "react";
 import DarkModeToggle from "../common/dark-mode-toggle";
 import { menu } from "@/constants";
 import { MenuIcon } from "@/icons";
+import { auth } from "@/auth";
+import AuthBtn from "../auth-btn.server";
 
-export default function Header() {
+export default async function Header() {
+  const session = await auth();
+
   return (
     <header className="relative z-30">
       <div className="h-16"></div>
@@ -33,19 +37,25 @@ export default function Header() {
             <div className="flex items-center gap-4">
               <div className="flex gap-4 items-center">
                 <DarkModeToggle />
-                <Link
-                  className="font-semibold rounded-md bg-blue-600 px-5 h-9 flex items-center text-sm text-white transition hover:bg-blue-700"
-                  href="/login"
-                >
-                  Login
-                </Link>
+                {session?.user ? (
+                  <AuthBtn />
+                ) : (
+                  <div className="flex gap-4">
+                    <Link
+                      className="font-semibold rounded-md bg-blue-600 px-5 h-9 flex items-center text-sm text-white transition hover:bg-blue-700"
+                      href="/signin"
+                    >
+                      Sign in
+                    </Link>
 
-                <Link
-                  className="hidden font-semibold rounded-md dark:bg-neutral-700 px-5 h-9  text-sm text-blue-600 dark:text-white transition hover:text-blue-600/75 sm:flex items-center bg-neutral-200"
-                  href="/register"
-                >
-                  Register
-                </Link>
+                    <Link
+                      className="hidden font-semibold rounded-md dark:bg-neutral-700 px-5 h-9  text-sm text-blue-600 dark:text-white transition hover:text-blue-600/75 sm:flex items-center bg-neutral-200"
+                      href="/signup"
+                    >
+                      Sign Up
+                    </Link>
+                  </div>
+                )}
               </div>
 
               <button className="block md:hidden">

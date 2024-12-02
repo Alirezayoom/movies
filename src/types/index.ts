@@ -6,13 +6,14 @@ export type MenuItem = {
 
 export type Movie = {
   id: string;
-  poster_path: string;
-  name: string;
-  original_title: string;
-  release_date: string;
-  vote_average: number;
-  backdrop_path: string;
-  overview: string;
+  title: string;
+  description: string;
+  genre: string;
+  imdb_score: string;
+  video_url: string;
+  featured_image: string;
+  released_year: number;
+  __typename: string;
 };
 
 export type Movies = {

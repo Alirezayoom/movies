@@ -5,7 +5,7 @@ import { PlayIcon } from "@/icons";
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   return (
-    <Link href="/movies/movie-name" className="inline-block">
+    <Link href={`/movies/${movie.id}`} className="inline-block">
       <div className="relative aspect-[11/16] group rounded-xl overflow-hidden">
         <div
           className="opacity-0 group-hover:opacity-100 transition duration-200 
@@ -17,18 +17,18 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           </div>
         </div>
         <div className="absolute left-0 top-0 w-full h-full bg-neutral-500 animate-pulse"></div>
-        <Image src={movie?.poster_path} alt={movie?.name} fill />
+        <Image src={movie?.featured_image} alt={movie?.title} fill />
       </div>
       <div className="text-neutral-900 dark:text-neutral-200 text-sm mt-2 font-bold line-clamp-1">
-        {movie?.original_title}
+        {movie?.title}
       </div>
       <div className="flex justify-between items-center">
         <div className="text-sm font-semibold text-neutral-500">
-          {movie?.release_date.slice(-4)}
+          {movie?.released_year}
         </div>
         <div className="flex gap-1 items-center text-yellow-500">
           <div className="">&#9733;</div>
-          <div className="text-sm font-bold">{movie?.vote_average}</div>
+          <div className="text-sm font-bold">{movie?.imdb_score}</div>
         </div>
       </div>
     </Link>

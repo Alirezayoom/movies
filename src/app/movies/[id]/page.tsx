@@ -1,32 +1,28 @@
-import { config } from "@/config";
-import { Movies } from "@/types";
+import { fetchMovie } from "@/services/fetchMovie";
+import { Movie } from "@/types";
 import Image from "next/image";
 
 export default async function MoviePage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ id: string }>;
 }) {
-  const response = await fetch(`${config.apiUrl}/movies/paginated`, {
-    cache: "no-store",
-  });
-  const slug = (await params).slug;
-  console.log(slug, "this is slug");
-  const { data }: Movies = await response.json();
+  const id = (await params).id;
+  const data: Movie = await fetchMovie(id);
 
   return (
     <div>
       <div
         className="absolute inset-0 -z-10 bg-cover bg-center blur-md"
         style={{
-          backgroundImage: `url(${data[0]?.backdrop_path})`,
+          backgroundImage: `url(${data?.featured_image})`,
         }}
       />
       <div className="bg-gradient-to-t from-black/70 via-black/20 to-black/70">
         <div className="max-w-screen-lg mx-auto py-32 grid grid-cols-[max-content_1fr] gap-6">
           <div className="relative w-[250px] aspect-[11/16] px-4 sm:px-8">
             <Image
-              src={data[0].poster_path}
+              src={data?.featured_image}
               alt="poster"
               fill
               className="w-full h-full object-cover"
@@ -35,12 +31,10 @@ export default async function MoviePage({
 
           <div>
             <div className="text-3xl mb-1 text-white font-semibold z-20 relative">
-              {data[0].original_title}
+              {data?.title}
             </div>
 
-            <div className="text-neutral-400 mb-2">
-              {data[0]?.release_date.slice(-4)}
-            </div>
+            <div className="text-neutral-400 mb-2">{data?.released_year}</div>
 
             <div className="text-sm mb-4 font-semibold text-neutral-300">
               120 min | Family, Fantasy
@@ -50,7 +44,7 @@ export default async function MoviePage({
               <div className="flex gap-1 text-xl items-center text-yellow-500">
                 <div className="text-2xl">&#9733;</div>
                 <div className="font-bold text-neutral-200">
-                  {data[0]?.vote_average}
+                  {data?.imdb_score}
                 </div>
               </div>
 
@@ -58,7 +52,7 @@ export default async function MoviePage({
             </div>
 
             <div className="text-neutral-200 mb-12 line-clamp-4">
-              {data[0]?.overview}
+              {data?.description}
             </div>
 
             <div className="mt-auto flex gap-8">
