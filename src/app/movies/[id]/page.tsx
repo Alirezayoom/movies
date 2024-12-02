@@ -1,14 +1,16 @@
-import { fetchMovie } from "@/services/fetchMovie";
-import { Movie } from "@/types";
-import Image from "next/image";
+"use client";
 
-export default async function MoviePage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const id = (await params).id;
-  const data: Movie = await fetchMovie(id);
+import { GET_MOVIE } from "@/graphql/queries/getMovie";
+import { useQuery } from "@apollo/client";
+import Image from "next/image";
+import { useParams } from "next/navigation";
+
+export default async function MoviePage() {
+  const { id } = useParams();
+  const { data: movieData } = useQuery(GET_MOVIE, {
+    variables: { movieId: id },
+  });
+  const data = movieData?.movie;
 
   return (
     <div>
